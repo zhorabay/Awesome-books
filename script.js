@@ -26,6 +26,12 @@ function display() {
   }
   bookList.innerHTML = displayBook;
 
+  function removeBook(index) {
+    books.splice(index, 1);
+    localStorage.setItem('books', JSON.stringify(books));
+    display();
+  }
+
   const removeButtons = document.querySelectorAll('.remove-btn');
   removeButtons.forEach((button, index) => {
     button.addEventListener('click', () => removeBook(index));
@@ -34,14 +40,8 @@ function display() {
 
 display();
 
-function removeBook(index) {
-  books.splice(index, 1);
-  localStorage.setItem('books', JSON.stringify(books));
-  display();
-}
-
 function addBook(event) {
-  event.preventDefault(); 
+  event.preventDefault();
 
   const title1 = document.getElementById('title').value;
   const author1 = document.getElementById('author').value;
@@ -51,7 +51,7 @@ function addBook(event) {
 
   localStorage.setItem('books', JSON.stringify(books));
 
-  display(); 
+  display();
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
 }
