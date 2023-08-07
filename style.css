@@ -15,3 +15,7 @@
   display: grid;
   border-bottom: 1px solid grey;
 }
+
+.book-form {
+  display: flex;
+}
