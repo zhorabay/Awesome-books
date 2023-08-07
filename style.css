@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.book-list {
+  display: grid;
+  border-bottom: 1px solid grey;
+}
+
+.book-form {
+  display: flex;
+}
