@@ -14,7 +14,7 @@ class UI {
     flex.classList.add('lists');
     flex.innerHTML = `
 
-    <p>"${book.title}" by ${book.author}</p>
+    <p><span>"${book.title}"</span>  by  <span>${book.author}</span></p>
     <button type="submit" class="submit">Remove</button>
    
 
@@ -29,7 +29,7 @@ class UI {
     div.className = `alert ${className} `;
     div.appendChild(document.createTextNode(message));
 
-    const container = document.querySelector('.container');
+    const container = document.querySelector('#newbook');
     const form = document.querySelector('#book-form');
 
     container.insertBefore(div, form);
