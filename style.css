@@ -40,13 +40,15 @@
   font-weight: 700;
 }
 
-section h1, h2,
+section h1,
+h2,
 .navigation h3 {
   color: blueviolet;
   text-align: center;
 }
 
-section h1, h2 {
+section h1,
+h2 {
   padding: 15px;
 }
 
@@ -57,7 +59,6 @@ section h1, h2 {
   justify-content: flex-start;
   gap: 18px;
 }
-
 
 #book-list {
   display: grid;
