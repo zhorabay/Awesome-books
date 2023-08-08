@@ -11,13 +11,40 @@
   gap: 20px;
 }
 
+.container h1 {
+  color: blueviolet;
+}
+
 .book-list {
   display: grid;
-  border-bottom: 1px solid grey;
+  border: 3px solid violet;
+}
+
+.lists {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container h2 {
+  color: rgb(140, 69, 206);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
 }
 
 .book-form {
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#btn {
+  align-self: flex-end;
 }
 
 .success {

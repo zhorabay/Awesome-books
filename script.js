@@ -7,19 +7,24 @@ class Book {
 
 class UI {
   addBook(book) {
+    const title = document.getElementById('book');
+    this.title = title;
     const list = document.getElementById('book-list');
     const flex = document.createElement('div');
+    flex.classList.add('lists');
     flex.innerHTML = `
 
-    <p>${book.title}</p>
-    <p>${book.author}</p>
+    <p>"${book.title}" by ${book.author}</p>
     <button type="submit" class="submit">Remove</button>
+    <hr>
 
     `;
     list.appendChild(flex);
   }
 
   showAlert(message, className) {
+    const title = document.getElementById('book');
+    this.title = title;
     const div = document.createElement('div');
     div.className = `alert ${className} `;
     div.appendChild(document.createTextNode(message));
@@ -35,12 +40,16 @@ class UI {
   }
 
   deleteBook(target) {
+    const title = document.getElementById('book');
+    this.title = title;
     if (target.className === 'submit') {
       target.parentElement.remove();
     }
   }
 
   clearFields() {
+    const title = document.getElementById('book');
+    this.title = title;
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
   }
