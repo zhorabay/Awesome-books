@@ -16,7 +16,7 @@ class UI {
 
     <p>"${book.title}" by ${book.author}</p>
     <button type="submit" class="submit">Remove</button>
-    <hr>
+   
 
     `;
     list.appendChild(flex);
