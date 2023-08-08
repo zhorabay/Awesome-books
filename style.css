@@ -19,3 +19,17 @@
 .book-form {
   display: flex;
 }
+
+.success {
+  color: white;
+  padding: 5px;
+  margin: 5px 0 15px 0;
+  background-color: green;
+}
+
+.error {
+  color: white;
+  padding: 5px;
+  margin: 5px 0 15px 0;
+  background-color: red;
+}
