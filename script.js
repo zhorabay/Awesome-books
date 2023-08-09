@@ -1,6 +1,6 @@
 function pages() {
   return {
-  home: `
+    home: `
     <section id="library">
             <h1>All awesome Books</h1>
             <div id="book-list">
@@ -9,7 +9,7 @@ function pages() {
     </section>
   `,
 
-  addnew: `
+    addnew: `
     <section id="newbook">
             <div>
                 <h2>Add a new book</h2>
@@ -27,7 +27,7 @@ function pages() {
             </form>
     </section>
   `,
-  contact: `
+    contact: `
     <section id="contact">
             <h2>Contact Information</h2>
             <p>Do you have any questions or you just want to say "Hello"? <br>
@@ -43,20 +43,20 @@ function pages() {
 }
 
 function getPageContent(page) {
-  var contentToReturn;
-  switch(page){
+  let contentToReturn;
+  switch (page) {
     case 'home':
       contentToReturn = pages().home;
       break;
     case 'addnew':
       contentToReturn = pages().addnew;
       document.getElementById('content').innerHTML = contentToReturn;
-      attachFormEventListener();
       break;
     case 'contact':
       contentToReturn = pages().contact;
       document.getElementById('content').innerHTML = contentToReturn;
       break;
+    default:
   }
   document.getElementById('content').innerHTML = contentToReturn;
 }
@@ -80,7 +80,6 @@ class UI {
     <p><span>"${book.title}"</span>  by  <span>${book.author}</span></p>
     <button type="submit" class="submit">Remove</button>
    
-
     `;
 
     list.appendChild(flex);
@@ -93,8 +92,8 @@ class UI {
     div.className = `alert ${className} `;
     div.appendChild(document.createTextNode(message));
 
-    const container = document.querySelector('#newbook');
-    const form = document.querySelector('#book-form');
+    const container = document.getElementById('newbook');
+    const form = document.querySelector('form');
 
     container.insertBefore(div, form);
 
@@ -106,7 +105,7 @@ class UI {
   deleteBook(target) {
     const title = document.getElementById('book');
     this.title = title;
-    if (target.className === 'submit') {
+    if (target.classList.contains('submit')) {
       target.parentElement.remove();
     }
   }
@@ -119,8 +118,8 @@ class UI {
   }
 }
 
-function attachFormEventListener() {
-  document.getElementById('book-form').addEventListener('submit', (e) => {
+document.querySelector('#book-list').addEventListener('submit',
+  (e) => {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
 
@@ -139,20 +138,26 @@ function attachFormEventListener() {
     }
     e.preventDefault();
   });
-}
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   getPageContent('home');
-  
-  document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('submit')) {
-          const ui = new UI();
 
-          ui.deleteBook(e.target);
+  document.addEventListener('submit', (e) => {
+    if (e.target.classList.contains('submit')) {
+      const ui = new UI();
 
-          ui.showAlert('Book Removed', 'success');
+      ui.deleteBook(e.target);
 
-          e.preventDefault();
-      }
+      ui.showAlert('Book Removed', 'success');
+
+      e.preventDefault();
+    }
   });
 });
+
+const time = document.getElementById('time');
+
+setInterval(() => {
+  const date = new Date();
+  time.innerHTML = date.toLocaleTimeString();
+}, 1000);
