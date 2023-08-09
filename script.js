@@ -1,6 +1,7 @@
 function pages() {
   return {
     home: `
+    home: `
     <section id="library">
             <h1>All awesome Books</h1>
             <div id="book-list">
@@ -9,6 +10,7 @@ function pages() {
     </section>
   `,
 
+    addnew: `
     addnew: `
     <section id="newbook">
             <div>
@@ -27,6 +29,7 @@ function pages() {
             </form>
     </section>
   `,
+    contact: `
     contact: `
     <section id="contact">
             <h2>Contact Information</h2>
@@ -115,6 +118,13 @@ class UI {
     this.title = title;
     document.getElementById('title').value = '';
     document.getElementById('author').value = '';
+  }
+}
+
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
   }
 }
 
