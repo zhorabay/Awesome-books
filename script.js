@@ -1,3 +1,66 @@
+function pages() {
+  return {
+  home: `
+    <section id="library">
+            <h1>All awesome Books</h1>
+            <div id="book-list">
+                
+            </div>
+    </section>
+  `,
+
+  addnew: `
+    <section id="newbook">
+            <div>
+                <h2>Add a new book</h2>
+            </div>
+            <form id="book-form" class="book-form">
+                <div>
+                    <input type="text" id="title" class="title" placeholder="Title">
+                </div>
+                <div>
+                    <input type="text" id="author" class="author" placeholder="Author">
+                </div>
+                <div>
+                    <button type="submit" id="btn" class="btn">Add</button>
+                </div>
+            </form>
+    </section>
+  `,
+  contact: `
+    <section id="contact">
+            <h2>Contact Information</h2>
+            <p>Do you have any questions or you just want to say "Hello"? <br>
+                You can reach out to us!</p><br>
+            <ul class="contact-list">
+                <li>Our e-mail: thebestlibrary@book.com</li>
+                <li>Our phone number: +12345678912</li>
+                <li>Our address: 5th Villa, Calm str, Happy Republic</li>
+            </ul>
+    </section>
+  `,
+  };
+}
+
+function getPageContent(page) {
+  var contentToReturn;
+  switch(page){
+    case 'home':
+      contentToReturn = pages().home;
+      break;
+    case 'addnew':
+      contentToReturn = pages().addnew;
+      document.getElementById('content').innerHTML = contentToReturn;
+      attachFormEventListener();
+      break;
+    case 'contact':
+      contentToReturn = pages().contact;
+      document.getElementById('content').innerHTML = contentToReturn;
+      break;
+  }
+  document.getElementById('content').innerHTML = contentToReturn;
+}
+
 class Book {
   constructor(title, author) {
     this.title = title;
@@ -19,6 +82,7 @@ class UI {
    
 
     `;
+
     list.appendChild(flex);
   }
 
@@ -55,8 +119,8 @@ class UI {
   }
 }
 
-document.getElementById('book-form').addEventListener('submit',
-  (e) => {
+function attachFormEventListener() {
+  document.getElementById('book-form').addEventListener('submit', (e) => {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
 
@@ -75,14 +139,20 @@ document.getElementById('book-form').addEventListener('submit',
     }
     e.preventDefault();
   });
+}
 
-document.getElementById('book-list').addEventListener('click',
-  (e) => {
-    const ui = new UI();
+document.addEventListener('DOMContentLoaded', function() {
+  getPageContent('home');
+  
+  document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('submit')) {
+          const ui = new UI();
 
-    ui.deleteBook(e.target);
+          ui.deleteBook(e.target);
 
-    ui.showAlert('Book Removed', 'success');
+          ui.showAlert('Book Removed', 'success');
 
-    e.preventDefault();
+          e.preventDefault();
+      }
   });
+});

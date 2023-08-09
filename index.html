@@ -8,59 +8,24 @@
     <title>Awesome Books</title>
 </head>
 <body>
-    <header>
+
+    <main>
         <nav class="navigation">
             <h3> Awesome books</h3>
             <ul>
                 <li>
-                    <a href="#library" id="librarylink">List</a>
+                    <a href="#" id="librarylink" onclick="getPageContent('home')">List</a>
                 </li>
                 <li>
-                    <a href="#newbook" id="newbooklink">Add new</a>
+                    <a href="#" id="newbooklink" onclick="getPageContent('addnew')">Add new</a>
                 </li>
                 <li>
-                    <a href="#contact" id="contactlink">Contact</a>
+                    <a href="#" id="contactlink" onclick="getPageContent('contact')">Contact</a>
                 </li>
             </ul>
         </nav>
         <div id="time"> </div>
-    </header>
-
-    <main>
-        <section id="library">
-            <h1>All awesome Books</h1>
-            <div id="book-list">
-                
-            </div>
-        </section>
-
-        <section id="newbook">
-            <div>
-                <h2>Add a new book</h2>
-            </div>
-            <form id="book-form" class="book-form">
-                <div>
-                    <input type="text" id="title" class="title" placeholder="Title">
-                </div>
-                <div>
-                    <input type="text" id="author" class="author" placeholder="Author">
-                </div>
-                <div>
-                    <button type="submit" id="btn" class="btn">Add</button>
-                </div>
-            </form>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Information</h2>
-            <p>Do you have any questions or you just want to say "Hello"? <br>
-                You can reach out to us!</p><br>
-            <ul class="contact-list">
-                <li>Our e-mail: thebestlibrary@book.com</li>
-                <li>Our phone number: +12345678912</li>
-                <li>Our address: 5th Villa, Calm str, Happy Republic</li>
-            </ul>
-        </section>
+        <div><p id="content"></p></div>
     </main>
 
     <footer>
@@ -68,5 +33,10 @@
     </footer>
     
     <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            getPageContent('home');
+        };
+    </script>
 </body>
 </html>
