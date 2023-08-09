@@ -5,7 +5,6 @@
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -35,13 +34,12 @@
   color: rgb(237, 134, 255);
 }
 
-
-.time{
+.time {
   display: flex;
-    justify-content: space-between;
-    padding: 16px;
-    color: black;
-    padding-top: 2px;
+  justify-content: space-between;
+  padding: 16px;
+  color: black;
+  padding-top: 2px;
   margin-bottom: 16px;
   flex-direction: row-reverse;
 }

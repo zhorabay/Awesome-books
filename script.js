@@ -1,6 +1,6 @@
 function pages() {
   return {
-  home: `
+    home: `
     <section id="library">
             <h1>All awesome Books</h1>
             <div id="book-list">
@@ -9,7 +9,7 @@ function pages() {
     </section>
   `,
 
-  addnew: `
+    addnew: `
     <section id="newbook">
             <div>
                 <h2>Add a new book</h2>
@@ -27,7 +27,7 @@ function pages() {
             </form>
     </section>
   `,
-  contact: `
+    contact: `
     <section id="contact">
             <h2>Contact Information</h2>
             <p>Do you have any questions or you just want to say "Hello"? <br>
@@ -40,32 +40,6 @@ function pages() {
     </section>
   `,
   };
-}
-
-function getPageContent(page) {
-  var contentToReturn;
-  switch(page){
-    case 'home':
-      contentToReturn = pages().home;
-      break;
-    case 'addnew':
-      contentToReturn = pages().addnew;
-      document.getElementById('content').innerHTML = contentToReturn;
-      attachFormEventListener();
-      break;
-    case 'contact':
-      contentToReturn = pages().contact;
-      document.getElementById('content').innerHTML = contentToReturn;
-      break;
-  }
-  document.getElementById('content').innerHTML = contentToReturn;
-}
-
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
 }
 
 class UI {
@@ -119,6 +93,13 @@ class UI {
   }
 }
 
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+}
+
 function attachFormEventListener() {
   document.getElementById('book-form').addEventListener('submit', (e) => {
     const title = document.getElementById('title').value;
@@ -141,18 +122,40 @@ function attachFormEventListener() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function getPageContent(page) {
+  let contentToReturn;
+  switch (page) {
+    case 'home':
+      contentToReturn = pages().home;
+      break;
+    case 'addnew':
+      contentToReturn = pages().addnew;
+      document.getElementById('content').innerHTML = contentToReturn;
+      attachFormEventListener();
+      break;
+    case 'contact':
+      contentToReturn = pages().contact;
+      document.getElementById('content').innerHTML = contentToReturn;
+      break;
+    default:
+      // nothing
+      break;
+  }
+  document.getElementById('content').innerHTML = contentToReturn;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
   getPageContent('home');
-  
-  document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('submit')) {
-          const ui = new UI();
 
-          ui.deleteBook(e.target);
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('submit')) {
+      const ui = new UI();
 
-          ui.showAlert('Book Removed', 'success');
+      ui.deleteBook(e.target);
 
-          e.preventDefault();
-      }
+      ui.showAlert('Book Removed', 'success');
+
+      e.preventDefault();
+    }
   });
 });
