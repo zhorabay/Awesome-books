@@ -8,26 +8,35 @@
     <title>Awesome Books</title>
 </head>
 <body>
-    <div class="container">
-        <h1>All awesome Books</h1>
-        <div id="book-list">
-            
-        </div>
-        <div>
-            <h2>Add a new book</h2>
-        </div>
-        <form id="book-form" class="book-form">
-            <div>
-                <input type="text" id="title" class="title" placeholder="Title">
-            </div>
-            <div>
-                <input type="text" id="author" class="author" placeholder="Author">
-            </div>
-            <div>
-                <button type="submit" id="btn" class="btn">Add</button>
-            </div>
-        </form>
-    </div>
+
+    <main>
+        <nav class="navigation">
+            <h3> Awesome books</h3>
+            <ul>
+                <li>
+                    <a href="#" id="librarylink" onclick="getPageContent('home')">List</a>
+                </li>
+                <li>
+                    <a href="#" id="newbooklink" onclick="getPageContent('addnew')">Add new</a>
+                </li>
+                <li>
+                    <a href="#" id="contactlink" onclick="getPageContent('contact')">Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="time" class="time"></div>
+        <div><p id="content"></p></div>
+    </main>
+
+    <footer>
+        <p>Copyright &copy;All rights reserved</p>
+    </footer>
+    
     <script src="script.js"></script>
+    <script>
+        window.onload = function() {
+            getPageContent('home');
+        };
+    </script>
 </body>
 </html>

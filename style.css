@@ -1,6 +1,48 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin: 16px;
+  margin-bottom: 90px;
+  border: 3px solid violet;
+}
+
+.navigation ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.navigation ul li {
+  border-right: 2px solid violet;
+  padding: 0 8px;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: blueviolet;
+}
+
+.navigation ul li a:hover {
+  color: rgb(237, 134, 255);
+}
+
+section h1,
+h2,
+.navigation h3 {
+  color: blueviolet;
+  text-align: center;
+}
+
+section h1,
+h2 {
+  padding: 15px;
 }
 
 .container {
@@ -11,32 +53,46 @@
   gap: 18px;
 }
 
-.container h1 {
-  color: blueviolet;
-}
-
 #book-list {
   display: grid;
-  width: 90%;
-  gap: 5px;
+  margin: 16px;
   border: 3px solid violet;
-}
-
-.submit,
-#btn {
-  box-shadow: 2px 2px  grey;
-  padding: 2px;
 }
 
 .lists {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  padding: 5px 0;
 }
 
-.container h2 {
-  color: rgb(140, 69, 206);
+.lists p {
+  font-size: 16px;
+  padding: 7px;
+}
+
+.lists span {
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.submit,
+#btn {
+  font-size: 15px;
+  box-shadow: 2px 2px 3px grey;
+  background-color: rgb(255, 233, 255);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.submit {
+  margin: 2px 8px;
+}
+
+.submit:hover,
+#btn:hover {
+  background-color: rgb(237, 134, 255);
 }
 
 .form {
@@ -44,34 +100,71 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 90%;
+}
+
+#newbook,
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-form {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 20px;
+  margin-top: 60px;
 }
 
-#btn {
-  align-self: flex-end;
+input#title,
+input#author {
+  font-size: 18px;
+  padding: 7px 12px;
+  border: 1px solid violet;
 }
 
 .success {
   color: white;
   padding: 5px;
-  margin: 5px 0 15px 0;
+  margin: 5px 0;
   background-color: green;
 }
 
 .error {
   color: white;
   padding: 5px;
-  margin: 5px 0 15px 0;
+  margin: 5px 0;
   background-color: red;
 }
 
 .lists:nth-child(odd) {
   background-color: rgb(255, 196, 255);
+}
+
+#contact p {
+  margin-top: 60px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  margin: 16px;
+  border: 3px solid violet;
+  background-color: rgb(240, 128, 254);
+  color: white;
+  font-weight: 600;
+  margin-top: 90px;
+}
+
+.time {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 16px;
+  font-weight: 500;
+  color: blueviolet;
 }
