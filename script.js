@@ -1,65 +1,40 @@
-function pages() {
-  return {
-    home: `
-    <section id="library">
-            <h1>All awesome Books</h1>
-            <div id="book-list">
-                
-            </div>
-    </section>
-  `,
+const librarySection = document.getElementById('library');
+const formSection = document.getElementById('newbook');
+const contactSection = document.getElementById('contact');
+const libraryLink = document.getElementById('librarylink');
+const newBookLink = document.getElementById('newbooklink');
+const contactLink = document.getElementById('contactlink');
+const time = document.getElementById('time');
 
-    addnew: `
-    <section id="newbook">
-            <div>
-                <h2>Add a new book</h2>
-            </div>
-            <form id="book-form" class="book-form">
-                <div>
-                    <input type="text" id="title" class="title" placeholder="Title">
-                </div>
-                <div>
-                    <input type="text" id="author" class="author" placeholder="Author">
-                </div>
-                <div>
-                    <button type="submit" id="btn" class="btn">Add</button>
-                </div>
-            </form>
-    </section>
-  `,
-    contact: `
-    <section id="contact">
-            <h2>Contact Information</h2>
-            <p>Do you have any questions or you just want to say "Hello"? <br>
-                You can reach out to us!</p><br>
-            <ul class="contact-list">
-                <li>Our e-mail: thebestlibrary@book.com</li>
-                <li>Our phone number: +12345678912</li>
-                <li>Our address: 5th Villa, Calm str, Happy Republic</li>
-            </ul>
-    </section>
-  `,
-  };
+formSection.style.display = 'none';
+contactSection.style.display = 'none';
+
+function Form() {
+  formSection.style.display = 'block';
+  contactSection.style.display = 'none';
+  librarySection.style.display = 'none';
 }
 
-function getPageContent(page) {
-  let contentToReturn;
-  switch (page) {
-    case 'home':
-      contentToReturn = pages().home;
-      break;
-    case 'addnew':
-      contentToReturn = pages().addnew;
-      document.getElementById('content').innerHTML = contentToReturn;
-      break;
-    case 'contact':
-      contentToReturn = pages().contact;
-      document.getElementById('content').innerHTML = contentToReturn;
-      break;
-    default:
-  }
-  document.getElementById('content').innerHTML = contentToReturn;
+function Contact() {
+  contactSection.style.display = 'block';
+  formSection.style.display = 'none';
+  librarySection.style.display = 'none';
 }
+
+function List() {
+  librarySection.style.display = 'block';
+  formSection.style.display = 'none';
+  contactSection.style.display = 'none';
+}
+
+newBookLink.addEventListener('click', Form);
+contactLink.addEventListener('click', Contact);
+libraryLink.addEventListener('click', List);
+
+setInterval(() => {
+  const date = new Date();
+  time.innerHTML = date.toLocaleTimeString();
+}, 1000);
 
 class Book {
   constructor(title, author) {
@@ -77,11 +52,10 @@ class UI {
     flex.classList.add('lists');
     flex.innerHTML = `
 
-    <p><span>"${book.title}"</span>  by  <span>${book.author}</span></p>
+    <p><span>"${book.title}"</span> by <span>${book.author}</span></p>
     <button type="submit" class="submit">Remove</button>
    
     `;
-
     list.appendChild(flex);
   }
 
@@ -92,8 +66,8 @@ class UI {
     div.className = `alert ${className} `;
     div.appendChild(document.createTextNode(message));
 
-    const container = document.getElementById('newbook');
-    const form = document.querySelector('form');
+    const container = document.querySelector('#newbook');
+    const form = document.querySelector('#book-form');
 
     container.insertBefore(div, form);
 
@@ -105,7 +79,7 @@ class UI {
   deleteBook(target) {
     const title = document.getElementById('book');
     this.title = title;
-    if (target.classList.contains('submit')) {
+    if (target.className === 'submit') {
       target.parentElement.remove();
     }
   }
@@ -118,7 +92,7 @@ class UI {
   }
 }
 
-document.querySelector('#book-list').addEventListener('submit',
+document.getElementById('book-form').addEventListener('submit',
   (e) => {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
@@ -139,25 +113,13 @@ document.querySelector('#book-list').addEventListener('submit',
     e.preventDefault();
   });
 
-document.addEventListener('DOMContentLoaded', () => {
-  getPageContent('home');
+document.getElementById('book-list').addEventListener('click',
+  (e) => {
+    const ui = new UI();
 
-  document.addEventListener('submit', (e) => {
-    if (e.target.classList.contains('submit')) {
-      const ui = new UI();
+    ui.deleteBook(e.target);
 
-      ui.deleteBook(e.target);
+    ui.showAlert('Book Removed', 'success');
 
-      ui.showAlert('Book Removed', 'success');
-
-      e.preventDefault();
-    }
+    e.preventDefault();
   });
-});
-
-const time = document.getElementById('time');
-
-setInterval(() => {
-  const date = new Date();
-  time.innerHTML = date.toLocaleTimeString();
-}, 1000);
