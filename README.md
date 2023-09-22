@@ -32,9 +32,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Used plain Javascript]**
-- **[When the user clicks "Add" button, it adds the book to the list]**
-- **[When the user clicks "Remove" button, it removes the book from the list]**
+- **[The user can see 3 pages: List, Add new, Contacts]**
+- **[When the user clicks the "Add" button, it adds the book to the list]**
+- **[When the user clicks the "Remove" button, it removes the book from the list]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -98,14 +98,14 @@ Feel free to check the [issues page](https://github.com/zhorabay/Awesome-books/i
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project, pplease, feel free to star the repository and share it with others who might benefit from it.
+If you like this project, please, feel free to give a star to the repository and share it with others who might benefit from it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank Microverse team and Code reviewers who helped us with creating this project.
+I would like to thank the Microverse team and Code reviewers who helped me create this project and my husband and daughter for their tremendous support.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
